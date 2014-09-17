@@ -13,7 +13,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.bill.bridges.itunes.cache.ITunesLibraryCache;
-import org.bill.bridges.itunes.pojo.Track;
+import org.bill.bridges.model.jaxb.Track;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

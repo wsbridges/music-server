@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Library">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="tracks" type="Track" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="Track">
+           <xs:sequence>
+            <xs:element name="trackId" type="xs:string"/>
+            <xs:element name="name" type="xs:string"/>
+            <xs:element name="artist" type="xs:string"/>
+            <xs:element name="albumArtist" type="xs:string" minOccurs="0"/>
+            <xs:element name="album" type="xs:string" minOccurs="0"/>
+            <xs:element name="genre" type="xs:string" minOccurs="0"/>
+            <xs:element name="totalTime" type="xs:int"/>
+            <xs:element name="discNumber" type="xs:int" minOccurs="0"/>
+            <xs:element name="discCount" type="xs:int" minOccurs="0"/>
+            <xs:element name="trackNumber" type="xs:int" minOccurs="0"/>
+            <xs:element name="trackCount" type="xs:int" minOccurs="0"/>
+            <xs:element name="year" type="xs:int" minOccurs="0"/>
+            <xs:element name="location" type="xs:string"/>
+           </xs:sequence>
+    </xs:complexType>
+</xs:schema>

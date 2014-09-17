@@ -9,7 +9,7 @@ import java.util.Set;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.bill.bridges.itunes.pojo.Track;
+import org.bill.bridges.model.jaxb.Track;
 
 public class ITunesSearch {
 	protected static Log log = LogFactory.getLog(ITunesSearch.class);

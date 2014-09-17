@@ -6,19 +6,22 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.lang.StringUtils;
 import org.bill.bridges.file.converter.BitRate;
 import org.bill.bridges.file.converter.FileFormatConverter;
 import org.bill.bridges.file.converter.OutputFormat;
 import org.bill.bridges.itunes.cache.ITunesLibraryCache;
-import org.bill.bridges.itunes.pojo.Track;
+import org.bill.bridges.model.jaxb.Library;
+import org.bill.bridges.model.jaxb.Track;
 
 @Path("/music")
 public class MusicEndpointImpl implements MusicEndpoint {
+	@Override
 	@GET
 	@Path("/getSong")
-	@Produces({"application/octet-stream"})
+	@Produces({MediaType.APPLICATION_OCTET_STREAM})
 	public File getSong(@QueryParam("id")      String trackId, 
 			            @QueryParam("artist")  String artist, 
 			            @QueryParam("name")    String songName,
@@ -71,6 +74,16 @@ public class MusicEndpointImpl implements MusicEndpoint {
 		
 		String fileLocation = FileFormatConverter.convertFile(theTrack.getLocation(), eFormat, eBitRate);
 		return new File(fileLocation);
+	}
+
+	@Override
+	@GET
+	@Path("/syncLibrary")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Library syncLibrary(@QueryParam("md5")String libraryMD5) {
+		Library lib = new Library();
+		lib.getTracks().addAll(ITunesLibraryCache.getTracksCache().values());
+		return lib;
 	}
 
 }

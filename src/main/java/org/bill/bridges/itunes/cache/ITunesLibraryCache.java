@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.bill.bridges.itunes.pojo.Track;
+import org.bill.bridges.model.jaxb.Track;
 
 public class ITunesLibraryCache {
 	private static Log log = LogFactory.getLog(ITunesLibraryCache.class);
@@ -21,7 +21,7 @@ public class ITunesLibraryCache {
 	
 	public static void loadTrack(Track track) {
 		if(track.getTrackId() == null) {
-			//throw new RuntimeException("Track has no track id: " + track);
+			log.info("Track has no track id: " + track);
 			return;
 		}
 		else if(tracks.containsKey(track.getTrackId())) {
